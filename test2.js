@@ -2,20 +2,24 @@
  * @Author: TheRedOnTheBed 1352212189@qq.com
  * @Date: 2024-08-04 22:46:08
  * @LastEditors: TheRedOnTheBed 1352212189@qq.com
- * @LastEditTime: 2024-08-05 16:20:19
+ * @LastEditTime: 2024-08-06 11:46:46
  * @FilePath: \js\test2.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-let test = {
+let testObj = {
     name: 'abc',
     location: {
         x: 100,
         y: 100
     }
 }
+let testArr = [1,2,3,4]
 function render() {
     console.log('模拟视图渲染')
 }
+// 重写数组类型
+let arrayMethods = ['pop', 'shift', 'unshift', 'sort', 'reverse', 'splice', 'push']
+
 function observe(obj) {
     // 数据劫持
     if(!obj || typeof obj !== 'object' ) return 
@@ -42,7 +46,16 @@ function observe(obj) {
         })
     }
 }
-observe(test)
-test.name
-test.location.x = 123
-console.log('日志输出:', test.name)
+// observe(testObj)
+// // test.name
+// testObj.location.x = 123
+// // console.log('日志输出:', test.name)
+
+// // 使用defineProperty这种方式无法对对象中添加属性
+// testObj.location.a = 
+
+// 数组
+observe(testArr)
+testArr.push(5)
+testArr[3]
+
